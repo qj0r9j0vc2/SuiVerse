@@ -180,20 +180,22 @@ export function QuizModal({
     >
       <div
         style={{
-          background: '#171e2b',
+          background: 'linear-gradient(135deg,#13203b,#1c2c48)',
           borderRadius: 22,
+          border: '1px solid #2cf5ff55',
           padding: '40px 32px 36px 32px',
           minWidth: 360,
           minHeight: 220,
           maxWidth: '96vw',
           maxHeight: '92vh',
-          boxShadow: '0 4px 64px #2cf5ff42',
+          boxShadow: '0 6px 64px #2cf5ff42',
           color: '#f1fdff',
           position: 'relative',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           overflowY: 'auto',
+          fontFamily: 'Inter, Arial, sans-serif',
         }}
       >
         <button

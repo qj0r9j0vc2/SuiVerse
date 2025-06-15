@@ -33,6 +33,36 @@ export default function Header({ title, shortDesc, search, onSearch }: Props) {
         <div style={{ fontSize: 14, fontWeight: 500, color: '#ffe687' }}>{shortDesc}</div>
       </div>
       <div style={{ flex: 1 }} />
+      <nav style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
+        <a
+          href="/"
+          style={{ color: '#b8f4ff', fontSize: 16, fontWeight: 700 }}
+        >
+          Home
+        </a>
+        <a
+          href="/docs"
+          style={{ color: '#b8f4ff', fontSize: 16, fontWeight: 700 }}
+        >
+          Docs
+        </a>
+        <a
+          href="https://docs.sui.io/"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: '#b8f4ff', fontSize: 16, fontWeight: 700 }}
+        >
+          Sui Docs
+        </a>
+        <a
+          href="https://suivision.xyz/"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: '#b8f4ff', fontSize: 16, fontWeight: 700 }}
+        >
+          SuiVision
+        </a>
+      </nav>
       <input
         style={{
           background: '#19202b',

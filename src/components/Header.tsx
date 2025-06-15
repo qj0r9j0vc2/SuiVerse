@@ -5,11 +5,9 @@ type Props = {
   shortDesc: string
   search: string
   onSearch: (v: string) => void
-  darkMode: boolean
-  onToggleDark: () => void
 }
 
-export default function Header({ title, shortDesc, search, onSearch, darkMode, onToggleDark }: Props) {
+export default function Header({ title, shortDesc, search, onSearch }: Props) {
   const [input, setInput] = useState(search)
   return (
     <header
@@ -37,7 +35,7 @@ export default function Header({ title, shortDesc, search, onSearch, darkMode, o
       <div style={{ flex: 1 }} />
       <input
         style={{
-          background: darkMode ? '#19202b' : '#e2eaf6',
+          background: '#19202b',
           color: '#aee9ff',
           borderRadius: 8,
           border: 0,
@@ -51,21 +49,6 @@ export default function Header({ title, shortDesc, search, onSearch, darkMode, o
           onSearch(e.target.value)
         }}
       />
-      <button
-        onClick={onToggleDark}
-        style={{
-          marginLeft: 16,
-          background: darkMode ? '#333' : '#d2e3ff',
-          color: darkMode ? '#fff' : '#224',
-          borderRadius: 16,
-          border: 0,
-          padding: '6px 16px',
-          fontWeight: 700,
-          cursor: 'pointer',
-        }}
-      >
-        {darkMode ? '🌙 Dark' : '☀️ Light'}
-      </button>
     </header>
   )
 }

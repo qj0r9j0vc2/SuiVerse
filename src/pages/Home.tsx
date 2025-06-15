@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import React, { useState, useMemo, useEffect } from 'react'
+import React, { useState, useMemo } from 'react'
 import { TopicGraph3D } from '../components/TopicGraph3D'
 import { QuizModal } from '../components/Quiz/QuizModal'
 import Header from '../components/Header'
@@ -32,14 +32,7 @@ export default function Home() {
   const [focusPos, setFocusPos] = useState<[number, number, number] | null>(null)
   const [activeId, setActiveId] = useState<string | null>(null)
   const [activeNode, setActiveNode] = useState<TopicNode | null>(null)
-  const [darkMode, setDarkMode] = useState(
-    window.matchMedia('(prefers-color-scheme: dark)').matches
-  )
   const [search, setSearch] = useState('')
-
-  useEffect(() => {
-    document.body.style.background = darkMode ? '#000' : '#fff'
-  }, [darkMode])
 
   const [quizOpen, setQuizOpen] = useState(false)
 
@@ -63,7 +56,7 @@ export default function Home() {
       style={{
         width: '100vw',
         height: '100vh',
-        background: darkMode ? 'linear-gradient(120deg, #11162d 70%, #18223b 100%)' : '#eef4fc',
+        background: 'linear-gradient(120deg, #11162d 70%, #18223b 100%)',
         overflow: 'hidden',
         position: 'relative',
         fontFamily: 'Inter, Arial, sans-serif',
@@ -75,8 +68,6 @@ export default function Home() {
         shortDesc={siteShortDesc}
         search={search}
         onSearch={setSearch}
-        darkMode={darkMode}
-        onToggleDark={() => setDarkMode(!darkMode)}
       />
 
 
@@ -87,8 +78,8 @@ export default function Home() {
             top: 0, right: 0,
             width: 400,
             height: '100vh',
-            background: darkMode ? 'rgba(24,32,59,0.99)' : 'rgba(250,252,255,0.97)',
-            color: darkMode ? '#d7fbff' : '#222',
+            background: 'rgba(24,32,59,0.99)',
+            color: '#d7fbff',
             boxShadow: '-12px 0 32px #02122e80',
             borderRadius: '24px 0 0 24px',
             padding: '54px 36px 32px 36px',
@@ -300,7 +291,7 @@ export default function Home() {
         {isLoading ? (
           <div
             style={{
-              color: darkMode ? '#4ff3ff' : '#333',
+              color: '#4ff3ff',
               fontWeight: 700,
               fontSize: 36,
               textAlign: 'center',
@@ -312,7 +303,6 @@ export default function Home() {
         ) : (
           <TopicGraph3D
             graph={filtered}
-            darkMode={darkMode}
             focusPos={focusPos}
             setFocusPos={setFocusPos}
             activeId={activeId}

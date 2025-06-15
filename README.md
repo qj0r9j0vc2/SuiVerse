@@ -1,8 +1,13 @@
 # SuiVerse
 
-Interactive learning environment for the Sui blockchain. Built with React and Three.js.
+Interactive learning environment for the Sui blockchain. Built with React, Three.js and modern UI components.
 
-Features include a 3D topic graph, interactive quiz modal and dark/light mode toggle.
+Key features:
+
+- 3D topic graph visualisation
+- Documentation with selectable difficulty levels
+- Interactive quiz with shareable badges
+- Twitter OAuth login placeholder
 
 ## Getting Started
 
@@ -50,4 +55,3 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-# SuiVerse

@@ -76,7 +76,7 @@ export default function Home() {
       <div
         style={{
           position: 'absolute',
-          top: '30%',
+          top: '10%',
           left: 0,
           right: 0,
           textAlign: 'center',
@@ -353,9 +353,6 @@ export default function Home() {
       </div>
 
       <section style={{ padding: '80px 20px', textAlign: 'center' }}>
-        <h2 style={{ fontSize: 32, color: '#7be5fe', marginBottom: 16 }}>
-          Resources
-        </h2>
         <p
           style={{
             color: '#d7fbff',

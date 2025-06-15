@@ -8,6 +8,27 @@ export default function Docs() {
   const [quizOpen, setQuizOpen] = useState(false)
   const [loginOpen, setLoginOpen] = useState(false)
   const [user, setUser] = useState<any>(null)
+  const sections = [
+    {
+      id: 'intro',
+      title: 'Introduction',
+      body:
+        'Sui is a high-performance layer-1 designed for scale. This portal walks you through its fundamentals.',
+    },
+    {
+      id: 'validators',
+      title: 'Validator Setup',
+      body:
+        'Learn how validators participate in consensus and secure the network with step-by-step guides.',
+    },
+    {
+      id: 'move',
+      title: 'Move Contracts',
+      body:
+        'Dive into the Move language and start building secure on-chain programs on Sui.',
+    },
+  ]
+  const [section, setSection] = useState(sections[0])
 
   const getContent = () => {
     if (difficulty === 'advanced')
@@ -38,54 +59,97 @@ export default function Docs() {
         search=""
         onSearch={() => {}}
       />
-      <div style={{ paddingTop: 120, maxWidth: 800, margin: '0 auto' }}>
-        <button
-          onClick={handleLogin}
+
+      <div
+        style={{
+          paddingTop: 120,
+          maxWidth: 1200,
+          margin: '0 auto',
+          display: 'flex',
+          alignItems: 'flex-start',
+        }}
+      >
+        <aside
           style={{
-            padding: '10px 18px',
-            background: '#1da1f2',
-            color: '#fff',
-            border: 'none',
-            borderRadius: 18,
-            fontWeight: 700,
-            cursor: 'pointer',
-            marginBottom: 24,
+            width: 220,
+            paddingRight: 24,
+            borderRight: '1px solid #28435b',
           }}
         >
-          Sign in with Twitter
-        </button>
-        <div style={{ marginBottom: 16 }}>
-          <label style={{ marginRight: 12, fontWeight: 700 }}>Difficulty:</label>
-          <select
-            value={difficulty}
-            onChange={e => setDifficulty(e.target.value)}
-            style={{ padding: '6px 10px', borderRadius: 8 }}
+          <button
+            onClick={handleLogin}
+            style={{
+              padding: '10px 18px',
+              background: '#1da1f2',
+              color: '#fff',
+              border: 'none',
+              borderRadius: 18,
+              fontWeight: 700,
+              cursor: 'pointer',
+              marginBottom: 24,
+              width: '100%',
+            }}
           >
-            <option value="beginner">Beginner</option>
-            <option value="intermediate">Intermediate</option>
-            <option value="advanced">Advanced</option>
-          </select>
-        </div>
-        <p style={{ fontSize: 18, lineHeight: 1.6 }}>{getContent()}</p>
-        <button
-          onClick={() => {
-            if (user) setQuizOpen(true)
-            else setLoginOpen(true)
-          }}
-          style={{
-            marginTop: 24,
-            padding: '12px 24px',
-            background: 'linear-gradient(90deg,#2ac2f9,#6f95ff 93%)',
-            color: '#fff',
-            fontWeight: 700,
-            border: 'none',
-            borderRadius: 18,
-            cursor: 'pointer',
-          }}
-        >
-          Take Quiz
-        </button>
+            Sign in with Twitter
+          </button>
+          {sections.map(s => (
+            <div
+              key={s.id}
+              onClick={() => setSection(s)}
+              style={{
+                padding: '8px 4px',
+                marginBottom: 6,
+                cursor: 'pointer',
+                fontWeight: 700,
+                color: section.id === s.id ? '#81e9ff' : '#b8f4ff',
+              }}
+            >
+              {s.title}
+            </div>
+          ))}
+        </aside>
+
+        <main style={{ flex: 1, paddingLeft: 24 }}>
+          <div style={{ marginBottom: 16 }}>
+            <label style={{ marginRight: 12, fontWeight: 700 }}>Difficulty:</label>
+            <select
+              value={difficulty}
+              onChange={e => setDifficulty(e.target.value)}
+              style={{ padding: '6px 10px', borderRadius: 8 }}
+            >
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
+            </select>
+          </div>
+          <h2 style={{ fontSize: 28, color: '#7be5fe', margin: '0 0 12px' }}>
+            {section.title}
+          </h2>
+          <p style={{ fontSize: 18, lineHeight: 1.6, marginBottom: 20 }}>
+            {section.body}
+          </p>
+          <p style={{ fontSize: 18, lineHeight: 1.6 }}>{getContent()}</p>
+          <button
+            onClick={() => {
+              if (user) setQuizOpen(true)
+              else setLoginOpen(true)
+            }}
+            style={{
+              marginTop: 24,
+              padding: '12px 24px',
+              background: 'linear-gradient(90deg,#2ac2f9,#6f95ff 93%)',
+              color: '#fff',
+              fontWeight: 700,
+              border: 'none',
+              borderRadius: 18,
+              cursor: 'pointer',
+            }}
+          >
+            Take Quiz
+          </button>
+        </main>
       </div>
+
       <QuizModal open={quizOpen} onClose={() => setQuizOpen(false)} user={user} />
       <TwitterLoginModal
         open={loginOpen}

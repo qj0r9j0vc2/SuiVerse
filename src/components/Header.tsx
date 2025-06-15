@@ -35,6 +35,18 @@ export default function Header({ title, shortDesc, search, onSearch }: Props) {
       <div style={{ flex: 1 }} />
       <nav style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
         <a
+          href="/"
+          style={{ color: '#b8f4ff', fontSize: 16, fontWeight: 700 }}
+        >
+          Home
+        </a>
+        <a
+          href="/docs"
+          style={{ color: '#b8f4ff', fontSize: 16, fontWeight: 700 }}
+        >
+          Docs
+        </a>
+        <a
           href="https://docs.sui.io/"
           target="_blank"
           rel="noopener noreferrer"

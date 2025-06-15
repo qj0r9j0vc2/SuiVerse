@@ -1,15 +1,13 @@
 import { useState } from 'react'
 import Header from '../components/Header'
 import { QuizModal } from '../components/Quiz/QuizModal'
-
-const mockUser = {
-  name: 'Gizmo',
-  image: '/assets/dog.jpg',
-}
+import TwitterLoginModal from '../components/TwitterLoginModal'
 
 export default function Docs() {
   const [difficulty, setDifficulty] = useState('beginner')
   const [quizOpen, setQuizOpen] = useState(false)
+  const [loginOpen, setLoginOpen] = useState(false)
+  const [user, setUser] = useState<any>(null)
 
   const getContent = () => {
     if (difficulty === 'advanced')
@@ -20,7 +18,7 @@ export default function Docs() {
   }
 
   const handleLogin = () => {
-    alert('Twitter OAuth2 login placeholder')
+    setLoginOpen(true)
   }
 
   return (
@@ -70,7 +68,10 @@ export default function Docs() {
         </div>
         <p style={{ fontSize: 18, lineHeight: 1.6 }}>{getContent()}</p>
         <button
-          onClick={() => setQuizOpen(true)}
+          onClick={() => {
+            if (user) setQuizOpen(true)
+            else setLoginOpen(true)
+          }}
           style={{
             marginTop: 24,
             padding: '12px 24px',
@@ -85,7 +86,16 @@ export default function Docs() {
           Take Quiz
         </button>
       </div>
-      <QuizModal open={quizOpen} onClose={() => setQuizOpen(false)} user={mockUser} />
+      <QuizModal open={quizOpen} onClose={() => setQuizOpen(false)} user={user} />
+      <TwitterLoginModal
+        open={loginOpen}
+        onClose={() => setLoginOpen(false)}
+        onLogin={u => {
+          setUser(u)
+          setLoginOpen(false)
+          setQuizOpen(true)
+        }}
+      />
     </div>
   )
 }

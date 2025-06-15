@@ -3,6 +3,7 @@ import React, { useState, useMemo } from 'react'
 import { TopicGraph3D } from '../components/TopicGraph3D'
 import { QuizModal } from '../components/Quiz/QuizModal'
 import Header from '../components/Header'
+import TwitterLoginModal from '../components/TwitterLoginModal'
 import type { TopicGraph, TopicNode } from '../types/graph'
 
 
@@ -14,11 +15,6 @@ const fetchGraph = async (): Promise<TopicGraph> => {
   return res.json()
 }
 
-// Mock X(Twitter) user
-const mockUser = {
-  name: 'Gizmo',
-  image: '/assets/dog.jpg',
-}
 
 
 
@@ -35,6 +31,8 @@ export default function Home() {
   const [search, setSearch] = useState('')
 
   const [quizOpen, setQuizOpen] = useState(false)
+  const [loginOpen, setLoginOpen] = useState(false)
+  const [user, setUser] = useState<any>(null)
 
   const filtered = useMemo(() => {
     if (!data) return { nodes: [], links: [] }
@@ -55,9 +53,10 @@ export default function Home() {
     <div
       style={{
         width: '100vw',
-        height: '100vh',
+        minHeight: '100vh',
         background: 'linear-gradient(120deg, #11162d 70%, #18223b 100%)',
-        overflow: 'hidden',
+        overflowX: 'hidden',
+        overflowY: 'auto',
         position: 'relative',
         fontFamily: 'Inter, Arial, sans-serif',
       }}
@@ -69,6 +68,23 @@ export default function Home() {
         search={search}
         onSearch={setSearch}
       />
+
+      <div
+        style={{
+          position: 'absolute',
+          top: '30%',
+          left: 0,
+          right: 0,
+          textAlign: 'center',
+          color: '#e8fbff',
+          pointerEvents: 'none',
+        }}
+      >
+        <div style={{ fontSize: 48, fontWeight: 900 }}>Deep dive into Sui</div>
+        <div style={{ fontSize: 28, fontWeight: 700, marginTop: 8 }}>
+          welcome to the SuiVerse
+        </div>
+      </div>
 
 
       {activeNode && (
@@ -276,7 +292,10 @@ export default function Home() {
               transition: 'background 0.15s',
               width: '100%',
             }}
-            onClick={() => setQuizOpen(true)}
+            onClick={() => {
+              if (user) setQuizOpen(true)
+              else setLoginOpen(true)
+            }}
           >
             Prove your knowledge
           </button>
@@ -284,7 +303,16 @@ export default function Home() {
       )}
 
 
-      <QuizModal open={quizOpen} onClose={() => setQuizOpen(false)} user={mockUser} />
+      <QuizModal open={quizOpen} onClose={() => setQuizOpen(false)} user={user} />
+      <TwitterLoginModal
+        open={loginOpen}
+        onClose={() => setLoginOpen(false)}
+        onLogin={u => {
+          setUser(u)
+          setLoginOpen(false)
+          setQuizOpen(true)
+        }}
+      />
 
 
       <div style={{ width: '100vw', height: '100vh' }}>
@@ -311,6 +339,62 @@ export default function Home() {
           />
         )}
       </div>
+
+      <section style={{ padding: '80px 20px', textAlign: 'center' }}>
+        <h2 style={{ fontSize: 32, color: '#7be5fe', marginBottom: 16 }}>
+          Resources
+        </h2>
+        <p
+          style={{
+            color: '#d7fbff',
+            fontSize: 17,
+            maxWidth: 720,
+            margin: '0 auto 24px',
+            lineHeight: 1.6,
+          }}
+        >
+          Explore the official documentation and community tools to keep learning.
+        </p>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: 24,
+            flexWrap: 'wrap',
+          }}
+        >
+          <a
+            href="https://docs.sui.io/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              background: '#16254a',
+              color: '#aeefff',
+              padding: '12px 18px',
+              borderRadius: 12,
+              fontWeight: 700,
+              textDecoration: 'none',
+            }}
+          >
+            docs.sui.io
+          </a>
+          <a
+            href="https://suivision.xyz/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              background: '#16254a',
+              color: '#aeefff',
+              padding: '12px 18px',
+              borderRadius: 12,
+              fontWeight: 700,
+              textDecoration: 'none',
+            }}
+          >
+            suivision.xyz
+          </a>
+        </div>
+      </section>
 
 
       <style>

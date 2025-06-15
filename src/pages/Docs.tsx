@@ -2,33 +2,14 @@ import { useState } from 'react'
 import Header from '../components/Header'
 import { QuizModal } from '../components/Quiz/QuizModal'
 import TwitterLoginModal from '../components/TwitterLoginModal'
+import { docsSections } from '../docsContent'
 
 export default function Docs() {
   const [difficulty, setDifficulty] = useState('beginner')
   const [quizOpen, setQuizOpen] = useState(false)
   const [loginOpen, setLoginOpen] = useState(false)
   const [user, setUser] = useState<any>(null)
-  const sections = [
-    {
-      id: 'intro',
-      title: 'Introduction',
-      body:
-        'Sui is a high-performance layer-1 designed for scale. This portal walks you through its fundamentals.',
-    },
-    {
-      id: 'validators',
-      title: 'Validator Setup',
-      body:
-        'Learn how validators participate in consensus and secure the network with step-by-step guides.',
-    },
-    {
-      id: 'move',
-      title: 'Move Contracts',
-      body:
-        'Dive into the Move language and start building secure on-chain programs on Sui.',
-    },
-  ]
-  const [section, setSection] = useState(sections[0])
+  const [section, setSection] = useState(docsSections[0])
 
   const getContent = () => {
     if (difficulty === 'advanced')
@@ -92,7 +73,7 @@ export default function Docs() {
           >
             Sign in with Twitter
           </button>
-          {sections.map(s => (
+          {docsSections.map(s => (
             <div
               key={s.id}
               onClick={() => setSection(s)}

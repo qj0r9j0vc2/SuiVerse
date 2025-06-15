@@ -4,6 +4,7 @@ import { TopicGraph3D } from '../components/TopicGraph3D'
 import { QuizModal } from '../components/Quiz/QuizModal'
 import Header from '../components/Header'
 import TwitterLoginModal from '../components/TwitterLoginModal'
+import DocsSection from '../components/DocsSection'
 import type { TopicGraph, TopicNode } from '../types/graph'
 
 
@@ -435,6 +436,7 @@ export default function Home() {
         </div>
       </section>
 
+      <DocsSection />
 
       <style>
         {`

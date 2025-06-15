@@ -47,7 +47,15 @@ export default function DocsSection() {
             </div>
           ))}
         </aside>
-        <main style={{ flex: 1, paddingLeft: 24, color: '#e8f9ff' }}>
+        <main
+          style={{
+            flex: 1,
+            paddingLeft: 24,
+            color: '#e8f9ff',
+            height: 240,
+            overflowY: 'auto',
+          }}
+        >
           <h3 style={{ fontSize: 26, margin: '0 0 12px' }}>{section.title}</h3>
           <p style={{ fontSize: 18, lineHeight: 1.6 }}>{section.body}</p>
         </main>

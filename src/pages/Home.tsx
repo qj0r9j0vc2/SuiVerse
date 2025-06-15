@@ -76,13 +76,11 @@ export default function Home() {
 
       <div
         style={{
-          position: 'absolute',
-          top: '10%',
-          left: 0,
-          right: 0,
+          marginTop: 100,
           textAlign: 'center',
           color: '#e8fbff',
-          pointerEvents: 'none',
+          marginBottom: 40,
+          textShadow: '0 2px 24px #021a3d80',
         }}
       >
         <div style={{ fontSize: 48, fontWeight: 900 }}>Deep dive into Sui</div>
@@ -324,7 +322,7 @@ export default function Home() {
         style={{
           width: '80%',
           height: '70vh',
-          margin: '120px auto 0',
+          margin: '60px auto 0',
           padding: 20,
           boxSizing: 'border-box',
         }}

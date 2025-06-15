@@ -48,6 +48,7 @@ export default function Docs() {
           margin: '0 auto',
           display: 'flex',
           alignItems: 'flex-start',
+          gap: 32,
         }}
       >
         <aside
@@ -55,6 +56,7 @@ export default function Docs() {
             width: 220,
             paddingRight: 24,
             borderRight: '1px solid #28435b',
+            paddingTop: 20,
           }}
         >
           <button
@@ -90,7 +92,18 @@ export default function Docs() {
           ))}
         </aside>
 
-        <main style={{ flex: 1, paddingLeft: 24 }}>
+        <main
+          style={{
+            flex: 1,
+            padding: '20px 24px',
+            height: 360,
+            overflowY: 'auto',
+            background: '#0f1a2b',
+            borderRadius: 12,
+            boxShadow: '0 2px 12px #02162e80',
+            color: '#e8f9ff',
+          }}
+        >
           <div style={{ marginBottom: 16 }}>
             <label style={{ marginRight: 12, fontWeight: 700 }}>Difficulty:</label>
             <select

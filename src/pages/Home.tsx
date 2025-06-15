@@ -59,6 +59,10 @@ export default function Home() {
         overflowY: 'auto',
         position: 'relative',
         fontFamily: 'Inter, Arial, sans-serif',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        paddingBottom: 40,
       }}
     >
 
@@ -315,7 +319,15 @@ export default function Home() {
       />
 
 
-      <div style={{ width: '100vw', height: '100vh' }}>
+      <div
+        style={{
+          width: '80%',
+          height: '70vh',
+          margin: '120px auto 0',
+          padding: 20,
+          boxSizing: 'border-box',
+        }}
+      >
         {isLoading ? (
           <div
             style={{
@@ -392,6 +404,36 @@ export default function Home() {
             }}
           >
             suivision.xyz
+          </a>
+          <a
+            href="https://discord.gg/sui"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              background: '#16254a',
+              color: '#aeefff',
+              padding: '12px 18px',
+              borderRadius: 12,
+              fontWeight: 700,
+              textDecoration: 'none',
+            }}
+          >
+            Sui Discord
+          </a>
+          <a
+            href="https://github.com/MystenLabs/sui"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              background: '#16254a',
+              color: '#aeefff',
+              padding: '12px 18px',
+              borderRadius: 12,
+              fontWeight: 700,
+              textDecoration: 'none',
+            }}
+          >
+            Sui GitHub
           </a>
         </div>
       </section>

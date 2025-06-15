@@ -1,4 +1,10 @@
-# Getting Started with Create React App
+# SuiVerse
+
+Interactive learning environment for the Sui blockchain. Built with React and Three.js.
+
+Features include a 3D topic graph, interactive quiz modal and dark/light mode toggle.
+
+## Getting Started
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

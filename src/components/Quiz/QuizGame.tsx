@@ -60,7 +60,7 @@ export function QuizGame({ user, onClose }: { user: any; onClose: () => void }) 
   function shareOnTwitter() {
     const badge = getBadge(score, questions.length);
     const text = encodeURIComponent(
-      `I earned the ${badge.label} on Sui 101 Quiz! 🏅\nCheck your level at`
+      `I earned the ${badge.label} on SuiVerse Quiz! 🏅\nCheck your level at`
     );
     const url = encodeURIComponent(window.location.href);
     window.open(

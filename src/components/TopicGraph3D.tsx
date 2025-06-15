@@ -14,7 +14,6 @@ import { NebulaLayer } from './NebulaBackground'
 
 type Props = {
   graph: TopicGraph
-  darkMode: boolean
   focusPos: [number, number, number] | null
   setFocusPos: (v: [number, number, number] | null) => void
   activeId: string | null
@@ -23,7 +22,7 @@ type Props = {
 }
 
 export function TopicGraph3D({
-  graph, darkMode, focusPos, setFocusPos, activeId, setActiveId, setActiveNode
+  graph, focusPos, setFocusPos, activeId, setActiveId, setActiveNode
 }: Props) {
   const { nodes, links } = useForceGraph3d(graph)
   const controlsRef = useRef<any>(null)
@@ -49,7 +48,7 @@ export function TopicGraph3D({
   const baseCurveHeight = 2.1
 
   const isRelated = activeId ? (l.source.id === activeId || l.target.id === activeId) : false
-  const color = isRelated ? '#fffed3' : (darkMode ? '#76eefe' : '#22aaff')
+  const color = isRelated ? '#fffed3' : '#76eefe'
   const opacity = isRelated ? 0.32 : 0.10
 
 

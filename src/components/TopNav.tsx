@@ -15,7 +15,7 @@ export function TopNav({ onSearch, darkMode, onToggleDark }: Props) {
       padding: '10px 42px', zIndex: 100, display: 'flex', alignItems: 'center'
     }}>
       <img src="/assets/sui.png" alt="logo" width={36} height={36} style={{ marginRight: 18 }} />
-      Sui101
+      SuiVerse
       <div style={{ flex: 1 }} />
       <input
         style={{
